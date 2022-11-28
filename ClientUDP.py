@@ -108,7 +108,7 @@ class ClientUDP:
         error_msg = "From " + str(self.HOST) + ":" + str(self.PORT) + ": udp_seq="
 
 
-        if int(data[0:5]) > 10 or int(data[0:5]) < 0:
+        if int(data[0:5]) > self.packages or int(data[0:5]) < 0:
             return (error_msg + str(int(data[0:5])+1) +  " Number Error " + "time=" + str(rtt), False)
         elif int(data[0:5]) != (seq_number) and not delay:
             # imprime o delay e recebe de novo
@@ -147,8 +147,7 @@ class ClientUDP:
 
 
 if __name__ == "__main__":
-    host = '168.227.188.22'
-    # host = '127.0.0.1'
+    host = '127.0.0.1'
     port = 30000
     packs = 10
 
